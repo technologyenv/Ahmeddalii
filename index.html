@@ -3,271 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صنّاع الخير | المبادرة الطلابية للأكاديمية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>مبادرة إطعام | تبرع الآن</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #27ae60;
-            --secondary: #2ecc71;
-            --dark: #1a1a1a;
-            --light: #ffffff;
-            --glass: rgba(255, 255, 255, 0.85);
-        }
-
-        * { box-sizing: border-box; transition: all 0.3s ease; }
-        body { font-family: 'Cairo', sans-serif; margin: 0; background: #f0f2f5; color: var(--dark); overflow-x: hidden; scroll-behavior: smooth; }
-
-        /* Animation Keyframes */
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        /* Navigation */
-        header {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 15px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
-            animation: fadeInDown 0.8s;
-        }
-        .logo { font-weight: 800; font-size: 26px; color: var(--primary); letter-spacing: 1px; }
-
-        /* Hero Section with Moving Particles */
-        .hero {
-            height: 90vh;
-            background: linear-gradient(135deg, rgba(39, 174, 96, 0.9), rgba(46, 204, 113, 0.9)), url('hero.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
+        :root { --primary: #27ae60; --dark: #2c3e50; --light: #ecf0f1; }
+        body { margin: 0; padding: 0; font-family: 'Cairo', sans-serif; background: #f9f9f9; color: var(--dark); }
         
-        /* Particle Overlay */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .hero-content {
-            z-index: 2;
-            animation: fadeInUp 1s 0.3s both;
-        }
-        .hero h1 { font-size: 3.8rem; margin: 0; text-shadow: 2px 2px 15px rgba(0,0,0,0.3); }
-        .hero p { font-size: 1.5rem; opacity: 0.95; margin: 25px 0; max-width: 800px; }
-
-        /* Buttons */
-        .btn {
-            padding: 15px 45px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            text-decoration: none;
-            font-family: 'Cairo';
-            font-size: 19px;
-            z-index: 2;
-        }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 25px rgba(39, 174, 96, 0.4); }
-        .btn-primary:hover { transform: translateY(-7px); box-shadow: 0 15px 30px rgba(39, 174, 96, 0.5); background: var(--secondary); }
-
-        /* Donation Grid */
-        .container { padding: 90px 8%; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 45px; margin-top: 60px; }
-        .card {
-            background: white;
-            border-radius: 35px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.06);
-            opacity: 0; /* Hidden by default for scroll anim */
-            transform: translateY(20px);
-        }
-        .card.in-view { opacity: 1; transform: translateY(0); }
-        .card:hover { transform: translateY(-18px); box-shadow: 0 35px 70px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 260px; object-fit: cover; }
-        .card-body { padding: 35px; }
-        .card h3 { margin: 0 0 18px; color: var(--primary); font-size: 26px; font-weight: 800; }
+        header { background: white; padding: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .hero { background: linear-gradient(rgba(39, 174, 96, 0.8), rgba(39, 174, 96, 0.8)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1350&q=80'); background-size: cover; color: white; padding: 80px 20px; text-align: center; }
         
-        /* Modal Style */
-        .modal {
-            display: none;
+        .container { max-width: 700px; margin: -40px auto 40px; background: white; padding: 35px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center; }
+
+        /* زرار الواتساب الكريتيف العائم */
+        .whatsapp-float {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(7px);
-            z-index: 9999;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            display: flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
         }
-        .modal-content {
-            background: white;
-            width: 90%;
-            max-width: 480px;
-            padding: 45px;
-            border-radius: 40px;
-            position: relative;
-            text-align: center;
-            animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .close-btn { position: absolute; top: 25px; left: 30px; font-size: 35px; cursor: pointer; color: #bbb; }
-        input, select {
-            width: 100%;
-            padding: 18px;
-            margin: 12px 0;
-            border: 2px solid #eee;
-            border-radius: 18px;
-            font-family: 'Cairo';
-            font-size: 17px;
-        }
-        input:focus { border-color: var(--primary); outline: none; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128C7E; }
 
-        /* Stats */
-        .stats { background: var(--dark); color: white; padding: 70px 8%; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; }
-        .stat-item h2 { font-size: 3.5rem; color: var(--secondary); margin: 0; font-weight: 800; }
-        
-        footer { padding: 45px; text-align: center; background: #eef2f3; font-weight: 600; color: #7f8c8d; }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .donate-btn { 
+            background: #25d366; color: white; border: none; padding: 15px 40px; 
+            border-radius: 50px; font-size: 1.2em; cursor: pointer; text-decoration: none; 
+            display: inline-block; transition: 0.3s; font-weight: bold; margin-top: 20px;
+        }
+        .donate-btn:hover { background: #128C7E; transform: translateY(-3px); }
+
+        /* تعديل الفوتر بالأسماء المطلوبة */
+        footer { background: var(--dark); color: white; padding: 40px 20px; text-align: center; }
+        .footer-info { line-height: 1.8; }
+        .supervisor-box { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 15px; padding-top: 15px; }
+        .supervisor-name { color: #2ecc71; font-weight: bold; font-size: 1.1em; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">صنّاع الخير ✨</div>
+        <h1 style="color: var(--primary); margin: 0; font-size: 1.5em;">مبادرة إطعام 🍲</h1>
     </header>
 
-    <section class="hero">
-        <div id="particles-js"></div>
+    <div class="hero">
+        <h2>لقمة تُشبع جائعاً</h2>
+        <p>ساهم معنا في إدخال السرور على قلوب المحتاجين</p>
+    </div>
+
+    <a href="https://wa.me/201287554392" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="container">
+        <h3>تبرع الآن عبر واتساب</h3>
+        <p style="color: #666;">يمكنك التواصل معنا مباشرة لإرسال تبرعاتك أو الاستفسار عن حملاتنا.</p>
         
-        <div class="hero-content">
-            <h1>معاً نترك أثراً</h1>
-            <p>مبادرة طلاب الأكاديمية العربية للعلوم والتكنولوجيا والنقل البحري لنشر الأمل والتكافل.</p>
-            <button class="btn btn-primary" onclick="openModal()">ابدأ التبرع الآن</button>
-        </div>
-    </section>
-
-    <section class="container" id="campaigns">
-        <h2 style="font-size: 2.8rem; font-weight: 800;">حملاتنا النشطة</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="charity1.png" alt="إطعام">
-                <div class="card-body">
-                    <h3>إطعام مسكين</h3>
-                    <button class="btn btn-primary" onclick="openModal()">تبرع للحملة</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="charity2.png" alt="تعليم">
-                <div class="card-body">
-                    <h3>حقيبة مدرسية</h3>
-                    <button class="btn btn-primary" onclick="openModal()">تبرع للحملة</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="charity3.png" alt="علاج">
-                <div class="card-body">
-                    <h3>رعاية طبية</h3>
-                    <button class="btn btn-primary" onclick="openModal()">تبرع للحملة</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="stat-item"><h2>500+</h2><p>عائلة مستفيدة</p></div>
-        <div class="stat-item"><h2>1200+</h2><p>متطوع مشارك</p></div>
-    </section>
-
-    <div id="donateModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div style="font-size: 60px; margin-bottom: 15px;">🎁</div>
-            <h2 style="margin-top: 0; font-weight: 800;">ساهم في التغيير</h2>
-            <input type="text" id="name" placeholder="اسمك الكريم">
-            <input type="number" id="money" placeholder="مبلغ التبرع (جنيه)">
-            <select id="pay">
-                <option value="">اختر وسيلة الدفع</option>
-                <option>فودافون كاش</option>
-                <option>فيزا</option>
-            </select>
-            <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="validate()">تأكيد التبرع الآن</button>
-        </div>
+        <a href="https://wa.me/201287554392" class="donate-btn">
+            <i class="fab fa-whatsapp"></i> اضغط هنا للتبرع
+        </a>
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة - مشروع طلاب الأكاديمية البحرية &copy; 2026</p>
+        <div class="footer-info">
+            <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px;">مبادرة طلاب الأكاديمية</p>
+            <p>تحت إشراف:</p>
+            <div class="supervisor-box">
+                <p class="supervisor-name">أحمد علي سعد علي</p>
+                <p class="supervisor-name">عمر محمود فهمي</p>
+            </div>
+            <p style="font-size: 0.8em; opacity: 0.5; margin-top: 20px;">© 2026 جميع الحقوق محفوظة لمتطوعي المبادرة</p>
+        </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // 1. Magic Particles Setup
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
-                color: { value: "#ffffff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: false },
-                move: { enable: true, speed: 1.5, direction: "bottom", random: false, straight: false, out_mode: "out" }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { onhover: { enable: true, mode: "bubble" }, onclick: { enable: true, mode: "repulse" } },
-                modes: { bubble: { distance: 200, size: 6, duration: 2, opacity: 1, speed: 3 }, repulse: { distance: 200, duration: 0.4 } }
-            },
-            retina_detect: true
-        });
-
-        // 2. Scroll Animation Setup
-        const cards = document.querySelectorAll('.card');
-        const observerOptions = { root: null, threshold: 0.2, rootMargin: "0px" };
-
-        const cardObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        cards.forEach(card => cardObserver.observe(card));
-
-        // 3. Modal & Donation Logic
-        const modal = document.getElementById("donateModal");
-        function openModal() { modal.style.display = "flex"; }
-        function closeModal() { modal.style.display = "none"; }
-        function validate() {
-            const name = document.getElementById("name").value;
-            const money = document.getElementById("money").value;
-            const pay = document.getElementById("pay").value;
-            if(name == "" || money == "" || pay == "") {
-                alert("يا يمنى، لازم تملي كل البيانات عشان التبرع يوصل صح! 😊");
-            } else {
-                alert("شكراً يا " + name + "! تبرعك وصل بنجاح ❤️");
-                closeModal();
-                document.getElementById("name").value = "";
-                document.getElementById("money").value = "";
-                document.getElementById("pay").value = "";
-            }
-        }
-        window.onclick = function(event) { if (event.target == modal) closeModal(); }
-    </script>
 </body>
 </html>
